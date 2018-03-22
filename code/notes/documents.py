@@ -216,7 +216,7 @@ def read_i2b2(txt, con):
             c2 = tok_concepts[i+1]
             if c1[1] == c2[1]:
                 if c1[2] <= c2[2] and c2[2] <= c1[3]:
-                    fname = os.path.basenme(con)
+                    fname = os.path.basename(con)
                     error1='%s has overlapping entities on line %d'%(fname,c1[1])
                     error2="It can't be processed until you remove one"
                     error_msg = '%s\n%s' % (error1,error2)
