@@ -21,7 +21,14 @@ from tools           import flatten, save_list_structure, reconstruct_list
 from tools           import print_str, print_vec, print_files, write
 
 
-
+import DatasetCliner_experimental as Exp
+import tensorflow as tf
+import entity_lstm as entity_model
+import training_predict_LSTM
+import pickle
+import copy
+import helper_dataset as hd
+import shutil
 
 class ClinerModel:
 
@@ -146,15 +153,14 @@ class ClinerModel:
         # Import the tools for either CRF or LSTM
         if use_lstm:
             # NEW
-            import DatasetCliner_experimental as Exp
-
-            import tensorflow as tf
-            import entity_lstm as entity_model
-            import training_predict_LSTM
-            import pickle
-            import copy
-            import helper_dataset as hd
-            import shutil
+            # import DatasetCliner_experimental as Exp
+            # import tensorflow as tf
+            # import entity_lstm as entity_model
+            # import training_predict_LSTM
+            # import pickle
+            # import copy
+            # import helper_dataset as hd
+            # import shutil
                     
             self._pretrained_dataset=None
             self._pretrained_wordvectors=None
@@ -608,7 +614,7 @@ def generic_predict(p_or_n, tokenized_sents, vocab, clf, use_lstm, hyperparams):
        #model_folder="./models/NN_models"
        predictions=[]
        sys.stdout.write('\n use_lstm \n')
-       dataset = Exp.Dataset()     
+       dataset = Exp.Dataset()
        
        fictional_labels= copy.deepcopy(tokenized_sents)
        for idx,x in enumerate(fictional_labels):
