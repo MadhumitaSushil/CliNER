@@ -11,10 +11,10 @@ import sys
 import os
 import re
 
-from utilities import load_pos_tagger
+from code.feature_extraction.utils import load_pos_tagger
 
 # What modules are available
-from read_config import enabled_modules
+from code.feature_extraction.read_config import enabled_modules
 
 CLINER_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), *["..", ".."])
 
@@ -34,7 +34,7 @@ if enabled['UMLS']:
 
     umls_cache = UmlsCache()
 
-import word_features as feat_word
+import code.feature_extraction.word_features as feat_word
 
 nltk_tagger = load_pos_tagger()
 
@@ -67,13 +67,13 @@ enabled_IOB_prose_sentence_features.append('UMLS')
 
 
 def display_enabled_modules():
-    print
+    # print
     for module,status in enabled.items():
         if status:
-            print '\t', module, '\t', ' ENABLED'
+            print('\t', module, '\t', ' ENABLED')
         else:
-            print '\t', module, '\t', 'DISABLED'
-    print
+            print('\t', module, '\t', 'DISABLED')
+    # print
 
 
 
